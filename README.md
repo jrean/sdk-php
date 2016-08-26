@@ -28,8 +28,8 @@ For using this SDK do the following:
     4. You can now instantiate controllers and call the respective methods.
     
     
-BeMyGuestAPIV1Lib
-=================
+BeMyGuestAPIV1Lib - 中文版说明
+==============================
 这个API SDK 是由APIMATIC V2.0自动产生
 
 如何设置:
