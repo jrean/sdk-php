@@ -26,3 +26,29 @@ For using this SDK do the following:
    
         
     4. You can now instantiate controllers and call the respective methods.
+    
+    
+BeMyGuestAPIV1Lib
+=================
+这个API SDK 是由APIMATIC V2.0自动产生
+
+如何设置:
+=========
+这个生成的代码需要与你的API中的用户权限进行配置。你需要在controllers 里的 constructor 传用户权限和配置值
+
+如何建立工程: 
+============
+这个生成的代码使用了PHP library里的UniRest。这个library已经加入在composer.json的文件里。
+你必须连接到互联网操作。
+
+使用说明:
+========
+跟着以下的步骤使用该SDK：
+
+    1. 打开PHP >= 5.3 project，然后在project的文件夹里复制已生成的PHP文件。
+
+    2. 使用composer安装项目所需要的依赖. 通常这可以通过context menu command "Instal (dev)"以执行這行指令
+    3. 从你的文件里导入需要的classes ， 例如,
+           use BeMyGuestAPIV1Lib\Controllers\ConfigController;
+ 
+    4. 您现在可以实例化controllers并调用相应的方法。
