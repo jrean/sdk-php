@@ -12,32 +12,32 @@ use JsonSerializable;
 /**
  * @todo Write general description for this model
  */
-class UpdateBookingRequest implements JsonSerializable {
+class CancellationPolicy implements JsonSerializable {
     /**
      * @todo Write general description for this property
      * @required
-     * @var string $status public property
+     * @var integer $numberOfDays public property
      */
-    public $status;
+    public $numberOfDays;
 
     /**
      * @todo Write general description for this property
      * @required
-     * @var string $uuid public property
+     * @var integer $refundPercentage public property
      */
-    public $uuid;
+    public $refundPercentage;
 
     /**
      * Constructor to set initial or default values of member properties
-     * @param   string            $status   Initialization value for the property $this->status
-     * @param   string            $uuid     Initialization value for the property $this->uuid  
+     * @param   integer           $numberOfDays       Initialization value for the property $this->numberOfDays    
+     * @param   integer           $refundPercentage   Initialization value for the property $this->refundPercentage
      */
     public function __construct()
     {
         if(2 == func_num_args())
         {
-            $this->status = func_get_arg(0);
-            $this->uuid   = func_get_arg(1);
+            $this->numberOfDays     = func_get_arg(0);
+            $this->refundPercentage = func_get_arg(1);
         }
     }
 
@@ -48,8 +48,8 @@ class UpdateBookingRequest implements JsonSerializable {
     public function jsonSerialize()
     {
         $json = array();
-        $json['status'] = $this->status;
-        $json['uuid']   = $this->uuid;
+        $json['numberOfDays']     = $this->numberOfDays;
+        $json['refundPercentage'] = $this->refundPercentage;
 
         return $json;
     }

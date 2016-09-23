@@ -12,32 +12,32 @@ use JsonSerializable;
 /**
  * @todo Write general description for this model
  */
-class UpdateBookingRequest implements JsonSerializable {
+class Price implements JsonSerializable {
     /**
      * @todo Write general description for this property
      * @required
-     * @var string $status public property
+     * @var Promotion $promotion public property
      */
-    public $status;
+    public $promotion;
 
     /**
      * @todo Write general description for this property
      * @required
-     * @var string $uuid public property
+     * @var PriceSet $regular public property
      */
-    public $uuid;
+    public $regular;
 
     /**
      * Constructor to set initial or default values of member properties
-     * @param   string            $status   Initialization value for the property $this->status
-     * @param   string            $uuid     Initialization value for the property $this->uuid  
+     * @param   Promotion         $promotion   Initialization value for the property $this->promotion
+     * @param   PriceSet          $regular     Initialization value for the property $this->regular  
      */
     public function __construct()
     {
         if(2 == func_num_args())
         {
-            $this->status = func_get_arg(0);
-            $this->uuid   = func_get_arg(1);
+            $this->promotion = func_get_arg(0);
+            $this->regular   = func_get_arg(1);
         }
     }
 
@@ -48,8 +48,8 @@ class UpdateBookingRequest implements JsonSerializable {
     public function jsonSerialize()
     {
         $json = array();
-        $json['status'] = $this->status;
-        $json['uuid']   = $this->uuid;
+        $json['promotion'] = $this->promotion;
+        $json['regular']   = $this->regular;
 
         return $json;
     }

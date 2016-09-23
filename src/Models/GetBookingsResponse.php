@@ -12,32 +12,23 @@ use JsonSerializable;
 /**
  * @todo Write general description for this model
  */
-class UpdateBookingRequest implements JsonSerializable {
+class GetBookingsResponse extends BaseResponse implements JsonSerializable {
     /**
      * @todo Write general description for this property
      * @required
-     * @var string $status public property
+     * @var object $meta public property
      */
-    public $status;
-
-    /**
-     * @todo Write general description for this property
-     * @required
-     * @var string $uuid public property
-     */
-    public $uuid;
+    public $meta;
 
     /**
      * Constructor to set initial or default values of member properties
-     * @param   string            $status   Initialization value for the property $this->status
-     * @param   string            $uuid     Initialization value for the property $this->uuid  
+     * @param   object            $meta   Initialization value for the property $this->meta
      */
     public function __construct()
     {
-        if(2 == func_num_args())
+        if(1 == func_num_args())
         {
-            $this->status = func_get_arg(0);
-            $this->uuid   = func_get_arg(1);
+            $this->meta = func_get_arg(0);
         }
     }
 
@@ -48,8 +39,8 @@ class UpdateBookingRequest implements JsonSerializable {
     public function jsonSerialize()
     {
         $json = array();
-        $json['status'] = $this->status;
-        $json['uuid']   = $this->uuid;
+        $json['meta'] = $this->meta;
+        $json = array_merge($json, parent::jsonSerialize());
 
         return $json;
     }

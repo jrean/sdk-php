@@ -2,14 +2,15 @@
 /*
  * BeMyGuestAPIV1Lib
  *
- * This file was automatically generated for BeMyGuest by APIMATIC v2.0 on 05/03/2016
+ * This file was automatically generated for BeMyGuest by APIMATIC v2.0 ( https://apimatic.io ) on 09/23/2016
  */
 
 namespace BeMyGuestAPIV1Lib\Models;
 
-use BeMyGuestAPIV1Lib\Models\BaseEnum;
-
-class BookingStatusesEnum extends BaseEnum {
+/**
+ * Available booking statuses for filtering results on getBookings endpoint
+ */
+class BookingStatusesEnum {
     /**
      * TODO: Write general description for this element
      */
