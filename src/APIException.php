@@ -1,10 +1,10 @@
 <?php
-/*
+/**
  * BeMyGuestAPIV1Lib
  *
- * This file was automatically generated for BeMyGuest by APIMATIC v2.0 ( https://apimatic.io ) on 09/23/2016
+ * This file was automatically generated for BeMyGuest by APIMATIC v2.0
+ * ( https://apimatic.io ) on 09/23/2016
  */
-
 namespace BeMyGuestAPIV1Lib;
 
 use Exception;
@@ -15,36 +15,36 @@ use Exception;
 class APIException extends Exception {
     /**
      * Error message
+     *
      * @var errorMessage
      */
     private $errorMessage;
+
     /**
      * HTTP context
+     *
      * @var HttpContext
      */
     private $context;
     
     /**
      * The HTTP response code from the API request
-     * @param string $reason the reason for raising an exception
-     * @param int $responseCode the HTTP response code from the API request
-     * @param string $responseBody the HTTP response body from the API request
+     *
+     * @param  string  $reason  The reason for raising an exception
+     * @param  string  $context The HttpContext
      */
     public function __construct($reason, $context)
     {
         parent::__construct($reason, $context->getResponse()->getStatusCode(), NULL);
+        
         $this->context = $context;
+        
         $this->errorMessage = $reason;
-        if(!(get_class()=='APIException'))
-            $this->unbox();
-    }
-
-    public function unbox()
-    {
     }
 
     /**
      * The HTTP context from the API request
+     *
      * @return HttpContext
      */
     public function getContext()
@@ -54,6 +54,7 @@ class APIException extends Exception {
 
     /**
      * The HTTP response code from the API request
+     *
      * @return int
      */
     public function getResponseCode()
@@ -63,6 +64,7 @@ class APIException extends Exception {
 
     /**
      * The HTTP response body from the API request
+     *
      * @return mixed
      */
     public function getResponseBody()
@@ -72,6 +74,7 @@ class APIException extends Exception {
 
     /**
      * The reason for raising an exception
+     *
      * @return string
      */
     public function getReason()
