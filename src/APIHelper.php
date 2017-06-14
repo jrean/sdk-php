@@ -1,10 +1,10 @@
 <?php
-/*
+/**
  * BeMyGuestAPIV1Lib
  *
- * This file was automatically generated for BeMyGuest by APIMATIC v2.0 ( https://apimatic.io ) on 09/23/2016
+ * This file was automatically generated for BeMyGuest by APIMATIC v2.0
+ * ( https://apimatic.io ) on 09/23/2016
  */
-
 namespace BeMyGuestAPIV1Lib;
 
 use InvalidArgumentException;
@@ -14,20 +14,23 @@ use InvalidArgumentException;
  */
 class APIHelper {
     /**
-    * Replaces template parameters in the given url
-    * @param    string  $queryBuilder    The query string builder to replace the template parameters
-    * @param    array   $parameters      The parameters to replace in the url
-    * @return   void 
-    */
+     * Replaces template parameters in the given url
+     *
+     * @param  string  $queryBuilder  The query string builder to replace the template parameters
+     * @param  array   $parameters    The parameters to replace in the url
+     * @return void 
+     */
     public static function appendUrlWithTemplateParameters(&$queryBuilder, $parameters)
     {
         //perform parameter validation
         if (is_null($queryBuilder) || !is_string($queryBuilder)) {
             throw new InvalidArgumentException('Given value for parameter "queryBuilder" is invalid.');
         }
+
         if (is_null($parameters)) {
             return;
         }
+
         //iterate and append parameters
         foreach ($parameters as $key => $value) {
             $replaceValue = '';
@@ -47,11 +50,12 @@ class APIHelper {
     }
 
     /**
-    * Appends the given set of parameters to the given query string
-    * @param    string  $queryBuilder   The query url string to append the parameters
-    * @param    array   $parameters     The parameters to append
-    * @return   void 
-    */
+     * Appends the given set of parameters to the given query string
+     *
+     * @param  string  $queryBuilder  The query url string to append the parameters
+     * @param  array   $parameters    The parameters to append
+     * @return void 
+     */
     public static function appendUrlWithQueryParameters(&$queryBuilder, $parameters)
     {
         //perform parameter validation
@@ -72,20 +76,25 @@ class APIHelper {
     }
 
     /**
-    * Validates and processes the given Url
-    * @param    string  $url The given Url to process
-    * @return   string       Pre-processed Url as string */
+     * Validates and processes the given Url
+     *
+     * @param   string  $url  The given Url to process
+     * @return  string        Pre-processed Url as string
+     */
     public static function cleanUrl($url)
     {
         //perform parameter validation
         if(is_null($url) || !is_string($url)) {
             throw new InvalidArgumentException('Invalid Url.');
         }
+
         //ensure that the urls are absolute
         $matchCount = preg_match("#^(https?://[^/]+)#", $url, $matches);
+
         if ($matchCount == 0) {
             throw new InvalidArgumentException('Invalid Url format.');
         }
+
         //get the http protocol match
         $protocol = $matches[1];
 
@@ -104,14 +113,15 @@ class APIHelper {
      *
      * @source https://bugs.php.net/patch-display.php?bug_id=67477&patch=add-http_build_query_develop-function&revision=latest
      * 
-     * @param  array $data Input data to be encoded
-     * @return array       Encoded data
+     * @param  array  $data Input data to be encoded
+     * @return array        Encoded data
      */
     public static function httpBuildQueryDevelop($data) {
         // if not array, $data is okay
         if(!is_array($data)) {
             return $data;
         }
+
         foreach($data as $key => $val) {
             if(is_array($val)) {
                 foreach($val as $k => $v) {
@@ -126,18 +136,21 @@ class APIHelper {
                         $data["{$key}[{$k}]"] = $v;
                     }
                 }
+
                 unset($data[$key]);
             }
         }
+
         return $data;
     }
 
     /**
      * Deserialize a Json string
-     * @param  string   $json       A valid Json string
-     * @param  mixed    $instance   Instance of an object to map the json into
-     * @param  boolean  $isArray    Is the Json an object array?
-     * @return mixed                Decoded Json
+     *
+     * @param  string   $json      A valid Json string
+     * @param  mixed    $instance  Instance of an object to map the json into
+     * @param  boolean  $isArray   Is the Json an object array?
+     * @return mixed               Decoded Json
      */
     public static function deserialize($json, $instance = null, $isArray = false)
     {
